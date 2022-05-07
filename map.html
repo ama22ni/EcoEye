@@ -9,6 +9,7 @@
 <!--    fffffff  -->
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script type = "text/javascript" src="methods.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -116,23 +117,11 @@ background: none;
           
           </ul>
 
-        <!-- <a href="#" class="amiri"> احتطاب</a> <br>
-        <a href="#" class="amiri">رعي جائر</a> <br>
-        <a href="#" class="amiri">صيد جائر</a> <br>
-        <a href="#" class="amiri">إشعال نار</a><br>
-        <a href="#" class="amiri">نقل رمال</a> <br>
-        <a href="#" class="amiri">بلاغات</a>  -->
+        
 
       </div>
       
-      <!-- <div style="margin-left:200px">
-      
-      <div class="w3-container">
-      <h2>Sidebar Icons</h2>
-      <p>In this example we have used icons in the sidebar.</p>
-      </div>
-      
-      </div> -->
+     
     
             <div class="folium-map" id="map" ></div>
         
@@ -167,180 +156,199 @@ background: none;
                 {"attribution": "Google", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
 
-            function showEhtetab() {
-            for (let x in Ehtetab) {
-                Ehtetab[x].addTo(map);
-                       }
-                    }
-
-                    function showraei() {
-                        for (let x in Ehtetab) {
-                Ehtetab[x].removeFrom(map);
-                       }
-                    }
-
             Ehtetab=[];
             var iconEhtetab = L.AwesomeMarkers.icon(
                 {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
             );
 
-        
-             // البوينتر اللي تطلع بخريطة المملكة
-             Ehtetab[0] = L.marker(
-                [24.260925, 39.772044],
-                {});
-        
-            Ehtetab[0].setIcon(iconEhtetab);
-        
-    
-        var popup_5345a40af622493b8d448801a416529c = L.popup({"maxWidth": "100%"});
+            Raei=[];
+            var iconRaei = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "black", "prefix": "fa"}
+            );
+
+            Said=[];
+            var iconSaid = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+
+            Eshaal=[];
+            var iconEshaal = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+
+            Naqel=[];
+            var iconNaqel = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "brown", "prefix": "fa"}
+            );
+
+            Balag=[];
+            var iconBalag = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
+            );
 
         
-            var i_frame_e5c057f7289847b9981340555ab5ac18 =
-            (`
-	<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-	    وقت الرصد :5:00 مساءً 
-   `+'<br>'+
 
-    `<a href="https://goo.gl/maps/v4Z1kD1PXpQjbmzx5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
-    + `</div>`
-
-
-	 );  
-               popup_5345a40af622493b8d448801a416529c.setContent(i_frame_e5c057f7289847b9981340555ab5ac18);
-        
-
-        Ehtetab[0].bindPopup(popup_5345a40af622493b8d448801a416529c)
-        ;
-
-        // هنا ينتهي عفش البوينتر اللي تطلع بخريطة المملكة
-
-       
 
         
-    
-    
-             Ehtetab[1] = L.marker(
-                [28.095422, 43.492978],
-                {});
-        
-    
-            Ehtetab[1].setIcon(iconEhtetab);
-        
-    
-        var popup_0350bf625dd2428e8675d06543be1955 = L.popup({"maxWidth": "100%"});
+            // ********** ehtetab ************
 
-        
-            var i_frame_831582b4c2b14d09a80347198015c9b4 =
-            (`
-	<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-	    وقت الرصد :8:23 صباحًا 
-   `+'<br>'+
+            
 
-    `<a href="https://goo.gl/maps/uRw9k2CVRQwUtkpr6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
-    + `</div>`
-
-
-	 );             popup_0350bf625dd2428e8675d06543be1955.setContent(i_frame_831582b4c2b14d09a80347198015c9b4);
-        
-
-        Ehtetab[1].bindPopup(popup_0350bf625dd2428e8675d06543be1955)
-        ;
-
-        
-    
-    
-             Ehtetab[2] = L.marker(
-                [27.512649, 44.282969],
-                {});
-        
-            Ehtetab[2].setIcon(iconEhtetab);
-        
-    
-        var popE2 = L.popup({"maxWidth": "100%"});
-
-        
-            var infoWindowE2 = (`
-	<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-	    وقت الرصد :3:00 مساءً 
-   `+'<br>'+
-
-    `<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
-    + `</div>`
-
-
-	 );
-            popE2.setContent(infoWindowE2);
-        
-
-        Ehtetab[2].bindPopup(popE2)
-        ;
-
-        
-        
-    
-    
-             Ehtetab[3] = L.marker(
-                [24.359952, 39.858904],
-                {});
-        
-    
-            Ehtetab[3].setIcon(iconEhtetab);
-        
-    
-        var popE3 = L.popup({"maxWidth": "100%"});
-
-        
-            var infoWindowE3 = 
-                (`
-	<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-	    وقت الرصد :3:25 مساءً 
-   `+'<br>'+
-
-    `<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
-    + `</div>`
-
-
-	 );
-                 popE3.setContent(infoWindowE3);
-        
-
-        Ehtetab[3].bindPopup(popE3)
-        ;
-
-
-
-        Ehtetab[4] = L.marker(
-                [25.492173, 42.571425],
-                {});
-        
-    
-            Ehtetab[4].setIcon(iconEhtetab);
-        
-    
-        var popE4 = L.popup({"maxWidth": "100%"});
-
-        
-            var infoWindowE4 = 
-                (`
-	<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-	    وقت الرصد :11:25 صباحًا 
-   `+'<br>'+
-
-    `<a href="https://goo.gl/maps/wzUtPRPDqNLrjwoB9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
-    + `</div>`
-
-
-	 );
-                 popE4.setContent(infoWindowE4);
-        
-
-        Ehtetab[4].bindPopup(popE4)
-        ;
-
-        Ehtetab[5] = L.marker(
-    [25.153915, 42.433404],
+Ehtetab[0] = L.marker(
+    [24.260925, 39.772044],
     {});
+
+Ehtetab[0].setIcon(iconEhtetab);
+
+
+var popE0 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowE0 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:00 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/v4Z1kD1PXpQjbmzx5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);  
+   popE0.setContent(infoWindowE0);
+
+
+Ehtetab[0].bindPopup(popE0)
+;
+
+
+
+
+
+
+
+
+ Ehtetab[1] = L.marker(
+    [28.095422, 43.492978],
+    {});
+
+
+Ehtetab[1].setIcon(iconEhtetab);
+
+
+var popE1 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowE1 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:23 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/uRw9k2CVRQwUtkpr6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);             popE1.setContent(infoWindowE1);
+
+
+Ehtetab[1].bindPopup(popE1)
+;
+
+
+
+
+ Ehtetab[2] = L.marker(
+    [27.512649, 44.282969],
+    {});
+
+Ehtetab[2].setIcon(iconEhtetab);
+
+
+var popE2 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowE2 = (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:00 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popE2.setContent(infoWindowE2);
+
+
+Ehtetab[2].bindPopup(popE2)
+;
+
+
+
+
+
+ Ehtetab[3] = L.marker(
+    [24.359952, 39.858904],
+    {});
+
+
+Ehtetab[3].setIcon(iconEhtetab);
+
+
+var popE3 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowE3 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:25 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popE3.setContent(infoWindowE3);
+
+
+Ehtetab[3].bindPopup(popE3)
+;
+
+
+
+Ehtetab[4] = L.marker(
+    [25.492173, 42.571425],
+    {});
+
+
+Ehtetab[4].setIcon(iconEhtetab);
+
+
+var popE4 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowE4 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:25 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/wzUtPRPDqNLrjwoB9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popE4.setContent(infoWindowE4);
+
+
+Ehtetab[4].bindPopup(popE4)
+;
+
+Ehtetab[5] = L.marker(
+[25.153915, 42.433404],
+{});
 
 
 Ehtetab[5].setIcon(iconEhtetab);
@@ -350,7 +358,7 @@ var popE5 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE5 = 
-    (`
+(`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
 وقت الرصد :10:55 صباحًا 
 `+'<br>'+
@@ -360,7 +368,7 @@ var infoWindowE5 =
 
 
 );
-     popE5.setContent(infoWindowE5);
+popE5.setContent(infoWindowE5);
 
 
 Ehtetab[5].bindPopup(popE5)
@@ -368,8 +376,8 @@ Ehtetab[5].bindPopup(popE5)
 
 
 Ehtetab[6] = L.marker(
-    [25.176914, 43.231967],
-    {});
+[25.176914, 43.231967],
+{});
 
 
 Ehtetab[6].setIcon(iconEhtetab);
@@ -379,7 +387,7 @@ var popE6 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE6 = 
-    (`
+(`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
 وقت الرصد :11:26 مساءً 
 `+'<br>'+
@@ -389,15 +397,15 @@ var infoWindowE6 =
 
 
 );
-     popE6.setContent(infoWindowE6);
+popE6.setContent(infoWindowE6);
 
 
 Ehtetab[6].bindPopup(popE6)
 ;
 
 Ehtetab[7] = L.marker(
-    [24.933705, 42.988203],
-    {});
+[24.933705, 42.988203],
+{});
 
 
 Ehtetab[7].setIcon(iconEhtetab);
@@ -407,7 +415,7 @@ var popE7 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE7 = 
-    (`
+(`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
 وقت الرصد :9:37 مساءً 
 `+'<br>'+
@@ -417,15 +425,15 @@ var infoWindowE7 =
 
 
 );
-     popE7.setContent(infoWindowE7);
+popE7.setContent(infoWindowE7);
 
 
 Ehtetab[7].bindPopup(popE7)
 ;
 
 Ehtetab[8] = L.marker(
-    [24.911487, 42.996309],
-    {});
+[24.911487, 42.996309],
+{});
 
 
 Ehtetab[8].setIcon(iconEhtetab);
@@ -435,7 +443,7 @@ var popE8 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE8 = 
-    (`
+(`
 <div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
 وقت الرصد :10:03 مساءً 
 `+'<br>'+
@@ -445,15 +453,15 @@ var infoWindowE8 =
 
 
 );
-     popE8.setContent(infoWindowE8);
+popE8.setContent(infoWindowE8);
 
 
 Ehtetab[8].bindPopup(popE8)
 ;
 
 Ehtetab[9] = L.marker(
-    [24.354746, 42.806789],
-    {});
+[24.354746, 42.806789],
+{});
 
 
 Ehtetab[9].setIcon(iconEhtetab);
@@ -463,7 +471,7 @@ var popE9 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE9 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :10:50 مساءً 
 `+'<br>'+
@@ -473,15 +481,15 @@ var infoWindowE9 =
 
 
 );
-     popE9.setContent(infoWindowE9);
+popE9.setContent(infoWindowE9);
 
 
 Ehtetab[9].bindPopup(popE9)
 ;
 
 Ehtetab[10] = L.marker(
-    [25.555356, 49.636902],
-    {});
+[25.555356, 49.636902],
+{});
 
 
 Ehtetab[10].setIcon(iconEhtetab);
@@ -491,7 +499,7 @@ var popE10 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE10 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :2:45 مساءً 
 `+'<br>'+
@@ -501,15 +509,15 @@ var infoWindowE10 =
 
 
 );
-     popE10.setContent(infoWindowE10);
+popE10.setContent(infoWindowE10);
 
 
 Ehtetab[10].bindPopup(popE10)
 ;
 
 Ehtetab[11] = L.marker(
-    [25.128575, 49.302490],
-    {});
+[25.128575, 49.302490],
+{});
 
 
 Ehtetab[11].setIcon(iconEhtetab);
@@ -519,7 +527,7 @@ var popE11 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE11 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :4:51 مساءً 
 `+'<br>'+
@@ -529,15 +537,15 @@ var infoWindowE11 =
 
 
 );
-     popE11.setContent(infoWindowE11);
+popE11.setContent(infoWindowE11);
 
 
 Ehtetab[11].bindPopup(popE11)
 ;
 
 Ehtetab[12] = L.marker(
-    [23.262697, 46.377722],
-    {});
+[23.262697, 46.377722],
+{});
 
 
 Ehtetab[12].setIcon(iconEhtetab);
@@ -547,7 +555,7 @@ var popE12 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE12 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :7:36 صباحًا 
 `+'<br>'+
@@ -557,15 +565,15 @@ var infoWindowE12 =
 
 
 );
-     popE12.setContent(infoWindowE12);
+popE12.setContent(infoWindowE12);
 
 
 Ehtetab[12].bindPopup(popE12)
 ;
 
 Ehtetab[13] = L.marker(
-    [19.646058, 45.227360],
-    {});
+[19.646058, 45.227360],
+{});
 
 
 Ehtetab[13].setIcon(iconEhtetab);
@@ -575,7 +583,7 @@ var popE13 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE13 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :2:27 مساءً 
 `+'<br>'+
@@ -585,15 +593,15 @@ var infoWindowE13 =
 
 
 );
-     popE13.setContent(infoWindowE13);
+popE13.setContent(infoWindowE13);
 
 
 Ehtetab[13].bindPopup(popE13)
 ;
 
 Ehtetab[14] = L.marker(
-    [17.503528, 42.944945],
-    {});
+[17.503528, 42.944945],
+{});
 
 
 Ehtetab[14].setIcon(iconEhtetab);
@@ -603,7 +611,7 @@ var popE14 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE14 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :6:41 مساءً 
 `+'<br>'+
@@ -613,15 +621,15 @@ var infoWindowE14 =
 
 
 );
-     popE14.setContent(infoWindowE14);
+popE14.setContent(infoWindowE14);
 
 
 Ehtetab[14].bindPopup(popE14)
 ;
 
 Ehtetab[15] = L.marker(
-    [20.062391, 41.226176],
-    {});
+[20.062391, 41.226176],
+{});
 
 
 Ehtetab[15].setIcon(iconEhtetab);
@@ -631,7 +639,7 @@ var popE15 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE15 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :1:21 مساءً 
 `+'<br>'+
@@ -641,7 +649,7 @@ var infoWindowE15 =
 
 
 );
-     popE15.setContent(infoWindowE15);
+popE15.setContent(infoWindowE15);
 
 
 Ehtetab[15].bindPopup(popE15)
@@ -649,8 +657,8 @@ Ehtetab[15].bindPopup(popE15)
 
 
 Ehtetab[16] = L.marker(
-    [17.453701, 42.980018],
-    {});
+[17.453701, 42.980018],
+{});
 
 
 Ehtetab[16].setIcon(iconEhtetab);
@@ -660,7 +668,7 @@ var popE16 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE16 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :5:29 مساءً 
 `+'<br>'+
@@ -670,15 +678,15 @@ var infoWindowE16 =
 
 
 );
-     popE16.setContent(infoWindowE16);
+popE16.setContent(infoWindowE16);
 
 
 Ehtetab[16].bindPopup(popE16)
 ;
 
 Ehtetab[17] = L.marker(
-    [20.064522, 41.266822],
-    {});
+[20.064522, 41.266822],
+{});
 
 
 Ehtetab[17].setIcon(iconEhtetab);
@@ -688,7 +696,7 @@ var popE17 = L.popup({"maxWidth": "100%"});
 
 
 var infoWindowE17 = 
-    (`
+(`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :8:29 مساءً 
 `+'<br>'+
@@ -698,7 +706,7 @@ var infoWindowE17 =
 
 
 );
-     popE17.setContent(infoWindowE17);
+popE17.setContent(infoWindowE17);
 
 
 Ehtetab[17].bindPopup(popE17)
@@ -711,12 +719,537 @@ Ehtetab[17].bindPopup(popE17)
 
 
 
-        
+            // ********* end ehtetab *********** 
 
 
+
+            // ********** raei *********** 
+
+
+           
+Raei[0] = L.marker(
+    [24.260925, 39.772044],
+    {});
+
+Raei[0].setIcon(iconRaei);
+
+
+var popR0 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR0 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:00 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/v4Z1kD1PXpQjbmzx5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);  
+   popR0.setContent(infoWindowR0);
+
+
+Raei[0].bindPopup(popR0)
+;
+
+
+
+
+
+
+
+
+ Raei[1] = L.marker(
+    [28.095422, 43.492978],
+    {});
+
+
+Raei[1].setIcon(iconRaei);
+
+
+var popR1= L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR1=
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:23 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/uRw9k2CVRQwUtkpr6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);             popR1.setContent(infoWindowR1);
+
+
+Raei[1].bindPopup(popR1)
+;
+
+
+
+
+ Raei[2] = L.marker(
+    [27.512649, 44.282969],
+    {});
+
+Raei[2].setIcon(iconRaei);
+
+
+var popR2 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR2 = (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:00 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR2.setContent(infoWindowR2);
+
+
+Raei[2].bindPopup(popR2)
+;
+
+
+
+
+
+ Raei[3] = L.marker(
+    [24.359952, 39.858904],
+    {});
+
+
+Raei[3].setIcon(iconRaei);
+
+
+var popR3 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR3 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:25 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popR3.setContent(infoWindowR3);
+
+
+Raei[3].bindPopup(popR3)
+;
+
+
+
+Raei[4] = L.marker(
+    [25.492173, 42.571425],
+    {});
+
+
+Raei[4].setIcon(iconRaei);
+
+
+var popR4 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR4 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:25 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/wzUtPRPDqNLrjwoB9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popR4.setContent(infoWindowR4);
+
+
+Raei[4].bindPopup(popR4)
+;
+
+Raei[5] = L.marker(
+[25.153915, 42.433404],
+{});
+
+
+Raei[5].setIcon(iconRaei);
+
+
+var popR5 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR5 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:55 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/LMAgYhfheSeh7dK39" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR5.setContent(infoWindowR5);
+
+
+Raei[5].bindPopup(popR5)
+;
+
+
+Raei[6] = L.marker(
+[25.176914, 43.231967],
+{});
+
+
+Raei[6].setIcon(iconRaei);
+
+
+var popR6 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR6 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:26 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/D4X1TUmvo7ebpLxm7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR6.setContent(infoWindowR6);
+
+
+Raei[6].bindPopup(popR6)
+;
+
+Raei[7] = L.marker(
+[24.933705, 42.988203],
+{});
+
+
+Raei[7].setIcon(iconRaei);
+
+
+var popR7 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR7 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :9:37 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/3mMJ1oGDLkFhUqAh8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR7.setContent(infoWindowR7);
+
+
+Raei[7].bindPopup(popR7)
+;
+
+Raei[8] = L.marker(
+[24.911487, 42.996309],
+{});
+
+
+Raei[8].setIcon(iconRaei);
+
+
+var popR8 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR8 = 
+(`
+<div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:03 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/e1Ua3D5jjz4U2Rqh9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR8.setContent(infoWindowR8);
+
+
+Raei[8].bindPopup(popR8)
+;
+
+Raei[9] = L.marker(
+[24.354746, 42.806789],
+{});
+
+
+Raei[9].setIcon(iconRaei);
+
+
+var popR9 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR9 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:50 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/vR2rDydhRRxJMJDC9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR9.setContent(infoWindowR9);
+
+
+Raei[9].bindPopup(popR9)
+;
+
+Raei[10] = L.marker(
+[25.555356, 49.636902],
+{});
+
+
+Raei[10].setIcon(iconRaei);
+
+
+var popR10 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR10 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :2:45 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/g8Eztet5zjmPsn127" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR10.setContent(infoWindowR10);
+
+
+Raei[10].bindPopup(popR10)
+;
+
+Raei[11] = L.marker(
+[25.128575, 49.302490],
+{});
+
+
+Raei[11].setIcon(iconRaei);
+
+
+var popR11 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR11 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :4:51 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/oDpiBi5W8CRrYkeo6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR11.setContent(infoWindowR11);
+
+
+Raei[11].bindPopup(popR11)
+;
+
+Raei[12] = L.marker(
+[23.262697, 46.377722],
+{});
+
+
+Raei[12].setIcon(iconRaei);
+
+
+var popR12 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR12 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :7:36 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/ShbFF3kLHuUG7EXh6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR12.setContent(infoWindowR12);
+
+
+Raei[12].bindPopup(popR12)
+;
+
+Raei[13] = L.marker(
+[19.646058, 45.227360],
+{});
+
+
+Raei[13].setIcon(iconRaei);
+
+
+var popR13 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR13 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :2:27 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/5NhUTUzNL42nJR6C7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR13.setContent(infoWindowR13);
+
+
+Raei[13].bindPopup(popR13)
+;
+
+Raei[14] = L.marker(
+[17.503528, 42.944945],
+{});
+
+
+Raei[14].setIcon(iconRaei);
+
+
+var popR14 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR14 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :6:41 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/aahiHF47NtEm7rZa8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR14.setContent(infoWindowR14);
+
+
+Raei[14].bindPopup(popR14)
+;
+
+Raei[15] = L.marker(
+[20.062391, 41.226176],
+{});
+
+
+Raei[15].setIcon(iconRaei);
+
+
+var popR15 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR15 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :1:21 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/cMQp7ZwP2LGFqzTD6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR15.setContent(infoWindowR15);
+
+
+Raei[15].bindPopup(popR15)
+;
+
+
+Raei[16] = L.marker(
+[17.453701, 42.980018],
+{});
+
+
+Raei[16].setIcon(iconRaei);
+
+
+var popR16 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR16 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:29 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/dH7CZwrxbAG57kEp6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR16.setContent(infoWindowR16);
+
+
+Raei[16].bindPopup(popR16)
+;
+
+Raei[17] = L.marker(
+[20.064522, 41.266822],
+{});
+
+
+Raei[17].setIcon(iconRaei);
+
+
+var popR17 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR17 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:29 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/U8XCwj89fZ3YAwWDA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR17.setContent(infoWindowR17);
+
+
+Raei[17].bindPopup(popR17)
+;
+
+
+            
         
 
-        
+            // ********* end raei *********** 
     
     
             var marker_bb5179ba51cc4c16bd8c08b978ee9526 = L.marker(
