@@ -19,6 +19,10 @@ function showEhtetab() {
                        }
             }
 
+          
+
+
+
                     function showraei() {
                         for (let x in Raei) {
                             Raei[x].addTo(map);
@@ -106,8 +110,8 @@ function showEhtetab() {
                     }
 
                     function showBalag() {
-                        for (let x in Naqel) {
-                            Naqel[x].addTo(map);
+                        for (let x in Balag) {
+                            Balag[x].addTo(map);
                }
                         for (let x in Ehtetab) {
                 Ehtetab[x].removeFrom(map);
@@ -121,7 +125,7 @@ function showEhtetab() {
                        for (let x in Eshaal) {
                         Eshaal[x].removeFrom(map);
                        }
-                       for (let x in Balag) {
-                        Balag[x].removeFrom(map);
+                       for (let x in Naqel) {
+                        Naqel[x].removeFrom(map);
                        }
                     }

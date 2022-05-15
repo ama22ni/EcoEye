@@ -1,0 +1,63 @@
+html, body {width: 100%;height: 100%;margin: 0;padding: 0;}
+#map {position:absolute;top:0;bottom:0;right:0;left:0;}
+#map {
+    position: relative;
+    width: 90.0%;
+    height: 100.0%;
+    left: 0.0%;
+    top: 0.0%;
+}
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+#mySidebar  ul li {
+display: inline-block;
+}
+
+#mySidebar ul li:not(:last-child):after {
+content: "_______________";
+}
+
+.btn {
+border: none;
+outline: none;
+background: none;
+/* padding-left: 5px; */
+/* padding-right: 5px; */
+/* font-size: 16px; */
+cursor: pointer;
+display: inline-block;
+
+}
+
+.btn:hover {
+
+color: rgb(116, 216, 127);
+background: none;
+outline: none;
+border: none;
+}
+
+.btn:active {
+/* background: white; */
+color: rgb(116, 216, 127);
+
+outline: none;
+
+}
+.btn:focus {
+/* color: black; */
+color: rgb(116, 216, 127);
+outline: none;
+
+}
+
+.default {color: white;
+font-family: 'Droid Arabic Naskh', serif;
+font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    /* padding-left: 5px; */
+    /* padding-right: 0px;
+    padding-top: 10px;
+    position: absolute; */
+}

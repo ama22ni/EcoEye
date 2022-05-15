@@ -7,8 +7,7 @@
             L_DISABLE_3D = false;
         </script>
 <!--    fffffff  -->
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
     <script type = "text/javascript" src="methods.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -23,96 +22,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="styles.css">
 
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
-            <style>
-                #map {
-                    position: relative;
-                    width: 93.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                @import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
-                
-            ul li {
-  display: inline-block;
-}
-
-ul li:not(:last-child):after {
-  content: "________";
-  }
-
-  .btn {
-    border: none;
-outline: none;
-background: none;
-  padding-left: 5px;
-   padding-right: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.btn:hover {
-    
-    color: rgb(116, 216, 127);
-    background: none;
-    outline: none;
-    border: none;
-}
-
-.btn:active {
-    /* background: white; */
-  color: rgb(116, 216, 127);
-  
-  outline: none;
-  
-}
-.btn:focus {
-    /* color: black; */
-    color: rgb(116, 216, 127);
-    outline: none;
-  
-}
-
-.default {color: white;
-    font-family: 'Amiri', serif;
-                    font-size: 20px;
-                    text-align: center;
-                    /* padding-left: 5px;
-                    padding-right: 20px; */
-}
-            </style>
+           
         <!-- Hello -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
     
 </head>
 <body>    
+
             
-    <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:120px;right:0;" id="mySidebar">
+    <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:155px;right:0;" id="mySidebar">
+       
      
 
-        <ul class="standard-nav visible-lg">
+        <ul class="side  standard-nav visible-lg ">
             <li><button class="btn default" onclick="showEhtetab()">احتطاب</button>
             </li>
             <li>
                 <button class="btn default" onclick="showraei()">رعي جائر</button>
             </li>
             <li>
-                <button class="btn default">صيد جائر</button>
+                <button class="btn default" onclick="showSaid()">صيد جائر</button>
             </li>
             <li>
             
-                <button class="btn default">إشعال نار</button>
+                <button class="btn default" onclick="showEshaal()">إشعال نار</button>
             </li>
             <li>
-                <button class="btn default">نقل رمال</button>
+                <button class="btn default" onclick="showNaqel()">نقل رمال</button>
             </li>
             <li>
-                <button class="btn default">بلاغات</button>
+                <button class="btn default" onclick="showBalag()">بلاغات</button>
             </li>
           
           </ul>
@@ -129,6 +75,7 @@ background: none;
 <script>    
 
             // map details
+     
     
             var map = L.map(
                 "map",
@@ -157,33 +104,34 @@ background: none;
             ).addTo(map);
 
             Ehtetab=[];
+            Ehtetab2=[];
             var iconEhtetab = L.AwesomeMarkers.icon(
                 {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
             );
 
             Raei=[];
             var iconRaei = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "black", "prefix": "fa"}
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "black", "prefix": "fa"}
             );
 
             Said=[];
             var iconSaid = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+                {"extraClasses": "fa-rotate-0", "icon": "paw", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
             );
 
             Eshaal=[];
             var iconEshaal = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+                {"extraClasses": "fa-rotate-0", "icon": "fire", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
             );
 
             Naqel=[];
             var iconNaqel = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "brown", "prefix": "fa"}
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "brown", "prefix": "fa"}
             );
 
             Balag=[];
             var iconBalag = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
+                {"extraClasses": "fa-rotate-0", "icon": "warning", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
             );
 
         
@@ -627,18 +575,18 @@ popE14.setContent(infoWindowE14);
 Ehtetab[14].bindPopup(popE14)
 ;
 
-Ehtetab[15] = L.marker(
+Ehtetab2[0] = L.marker(
 [20.062391, 41.226176],
 {});
 
 
-Ehtetab[15].setIcon(iconEhtetab);
+Ehtetab2[0].setIcon(iconEhtetab);
 
 
-var popE15 = L.popup({"maxWidth": "100%"});
+var popE20 = L.popup({"maxWidth": "100%"});
 
 
-var infoWindowE15 = 
+var infoWindowE20 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :1:21 مساءً 
@@ -649,53 +597,53 @@ var infoWindowE15 =
 
 
 );
-popE15.setContent(infoWindowE15);
+popE20.setContent(infoWindowE20);
 
 
-Ehtetab[15].bindPopup(popE15)
+Ehtetab2[0].bindPopup(popE20)
 ;
 
 
-Ehtetab[16] = L.marker(
-[17.453701, 42.980018],
+Ehtetab2[1] = L.marker(
+[21.620424, 43.519567],
 {});
 
 
-Ehtetab[16].setIcon(iconEhtetab);
+Ehtetab2[1] .setIcon(iconEhtetab);
 
 
-var popE16 = L.popup({"maxWidth": "100%"});
+var popE21 = L.popup({"maxWidth": "100%"});
 
 
-var infoWindowE16 = 
+var infoWindowE21 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :5:29 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/dH7CZwrxbAG57kEp6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/KrCsoVvG6LPsWbiJ6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
 );
-popE16.setContent(infoWindowE16);
+popE21.setContent(infoWindowE21);
 
 
-Ehtetab[16].bindPopup(popE16)
+Ehtetab2[1].bindPopup(popE21)
 ;
 
-Ehtetab[17] = L.marker(
+Ehtetab2[2] = L.marker(
 [20.064522, 41.266822],
 {});
 
 
-Ehtetab[17].setIcon(iconEhtetab);
+Ehtetab2[2].setIcon(iconEhtetab);
 
 
-var popE17 = L.popup({"maxWidth": "100%"});
+var popE22 = L.popup({"maxWidth": "100%"});
 
 
-var infoWindowE17 = 
+var infoWindowE22 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
 وقت الرصد :8:29 مساءً 
@@ -706,10 +654,10 @@ var infoWindowE17 =
 
 
 );
-popE17.setContent(infoWindowE17);
+popE22.setContent(infoWindowE22);
 
 
-Ehtetab[17].bindPopup(popE17)
+Ehtetab2[2].bindPopup(popE22)
 ;
 
 
@@ -728,7 +676,7 @@ Ehtetab[17].bindPopup(popE17)
 
            
 Raei[0] = L.marker(
-    [24.260925, 39.772044],
+    [21.832843, 42.181284],
     {});
 
 Raei[0].setIcon(iconRaei);
@@ -740,10 +688,10 @@ var popR0 = L.popup({"maxWidth": "100%"});
 var infoWindowR0 =
 (`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-وقت الرصد :5:00 مساءً 
+وقت الرصد :5:09 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/v4Z1kD1PXpQjbmzx5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/M3nRVV8RVPk9cfvi9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -762,7 +710,7 @@ Raei[0].bindPopup(popR0)
 
 
  Raei[1] = L.marker(
-    [28.095422, 43.492978],
+    [21.746455, 42.171322],
     {});
 
 
@@ -778,7 +726,7 @@ var infoWindowR1=
 وقت الرصد :8:23 صباحًا 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/uRw9k2CVRQwUtkpr6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/pmShnAN2dgp7Wwvr6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -792,7 +740,7 @@ Raei[1].bindPopup(popR1)
 
 
  Raei[2] = L.marker(
-    [27.512649, 44.282969],
+    [21.315318, 42.969885],
     {});
 
 Raei[2].setIcon(iconRaei);
@@ -803,10 +751,10 @@ var popR2 = L.popup({"maxWidth": "100%"});
 
 var infoWindowR2 = (`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-وقت الرصد :3:00 مساءً 
+وقت الرصد :3:14 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/FHvE9BWjXmC8qYPJ6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -822,7 +770,7 @@ Raei[2].bindPopup(popR2)
 
 
  Raei[3] = L.marker(
-    [24.359952, 39.858904],
+    [21.207178, 43.265824],
     {});
 
 
@@ -835,10 +783,10 @@ var popR3 = L.popup({"maxWidth": "100%"});
 var infoWindowR3 = 
     (`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-وقت الرصد :3:25 مساءً 
+وقت الرصد :9:25 صباحًا 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/wZj3ryeZnAarin6k8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/73HzhhE4Dmvoe1An6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -852,7 +800,7 @@ Raei[3].bindPopup(popR3)
 
 
 Raei[4] = L.marker(
-    [25.492173, 42.571425],
+    [20.282531, 46.558970],
     {});
 
 
@@ -865,10 +813,10 @@ var popR4 = L.popup({"maxWidth": "100%"});
 var infoWindowR4 = 
     (`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-وقت الرصد :11:25 صباحًا 
+وقت الرصد :11:29 صباحًا 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/wzUtPRPDqNLrjwoB9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/3AWQBqga4EU9Mc516" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -880,7 +828,7 @@ Raei[4].bindPopup(popR4)
 ;
 
 Raei[5] = L.marker(
-[25.153915, 42.433404],
+[19.780645, 45.884679],
 {});
 
 
@@ -896,7 +844,7 @@ var infoWindowR5 =
 وقت الرصد :10:55 صباحًا 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/LMAgYhfheSeh7dK39" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/X61Q1z2vPLc2UAhK7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -909,7 +857,7 @@ Raei[5].bindPopup(popR5)
 
 
 Raei[6] = L.marker(
-[25.176914, 43.231967],
+[18.890425, 45.545471],
 {});
 
 
@@ -922,10 +870,10 @@ var popR6 = L.popup({"maxWidth": "100%"});
 var infoWindowR6 = 
 (`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-وقت الرصد :11:26 مساءً 
+وقت الرصد :8:26 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/D4X1TUmvo7ebpLxm7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/ZPMi4aJin1AWZuCbA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -937,7 +885,7 @@ Raei[6].bindPopup(popR6)
 ;
 
 Raei[7] = L.marker(
-[24.933705, 42.988203],
+[22.217661, 41.683771],
 {});
 
 
@@ -950,10 +898,10 @@ var popR7 = L.popup({"maxWidth": "100%"});
 var infoWindowR7 = 
 (`
 <div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
-وقت الرصد :9:37 مساءً 
+وقت الرصد :9:47 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/3mMJ1oGDLkFhUqAh8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/wVnEBXVLjTaYxqgx5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -965,7 +913,7 @@ Raei[7].bindPopup(popR7)
 ;
 
 Raei[8] = L.marker(
-[24.911487, 42.996309],
+[29.145630, 36.732016],
 {});
 
 
@@ -978,10 +926,10 @@ var popR8 = L.popup({"maxWidth": "100%"});
 var infoWindowR8 = 
 (`
 <div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
-وقت الرصد :10:03 مساءً 
+وقت الرصد :10:53 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/e1Ua3D5jjz4U2Rqh9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/4sgQNXmp61RRMBHp7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -993,7 +941,7 @@ Raei[8].bindPopup(popR8)
 ;
 
 Raei[9] = L.marker(
-[24.354746, 42.806789],
+[29.898921, 38.054999],
 {});
 
 
@@ -1006,10 +954,10 @@ var popR9 = L.popup({"maxWidth": "100%"});
 var infoWindowR9 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
-وقت الرصد :10:50 مساءً 
+وقت الرصد :11:50 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/vR2rDydhRRxJMJDC9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/BwVtQPPWsVENdHY79" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1021,7 +969,7 @@ Raei[9].bindPopup(popR9)
 ;
 
 Raei[10] = L.marker(
-[25.555356, 49.636902],
+[29.718400, 37.344316],
 {});
 
 
@@ -1034,10 +982,10 @@ var popR10 = L.popup({"maxWidth": "100%"});
 var infoWindowR10 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
-وقت الرصد :2:45 مساءً 
+وقت الرصد :2:48 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/g8Eztet5zjmPsn127" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/gkVTeuKn9auTcztK6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1077,7 +1025,7 @@ Raei[11].bindPopup(popR11)
 ;
 
 Raei[12] = L.marker(
-[23.262697, 46.377722],
+[28.646541, 38.703869],
 {});
 
 
@@ -1090,10 +1038,10 @@ var popR12 = L.popup({"maxWidth": "100%"});
 var infoWindowR12 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
-وقت الرصد :7:36 صباحًا 
+وقت الرصد :6:36 صباحًا 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/ShbFF3kLHuUG7EXh6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/Q7AUsWWr2SCzqqT47" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1105,7 +1053,7 @@ Raei[12].bindPopup(popR12)
 ;
 
 Raei[13] = L.marker(
-[19.646058, 45.227360],
+[30.545052, 39.261420],
 {});
 
 
@@ -1121,7 +1069,7 @@ var infoWindowR13 =
 وقت الرصد :2:27 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/5NhUTUzNL42nJR6C7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/4dqjtkBuGqheUTVYA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1133,7 +1081,7 @@ Raei[13].bindPopup(popR13)
 ;
 
 Raei[14] = L.marker(
-[17.503528, 42.944945],
+[30.533538, 39.035085],
 {});
 
 
@@ -1146,10 +1094,10 @@ var popR14 = L.popup({"maxWidth": "100%"});
 var infoWindowR14 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
-وقت الرصد :6:41 مساءً 
+وقت الرصد :6:31 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/aahiHF47NtEm7rZa8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/icJwa4r1FL7Vtw268" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1161,7 +1109,7 @@ Raei[14].bindPopup(popR14)
 ;
 
 Raei[15] = L.marker(
-[20.062391, 41.226176],
+[28.184271, 43.952835],
 {});
 
 
@@ -1174,10 +1122,10 @@ var popR15 = L.popup({"maxWidth": "100%"});
 var infoWindowR15 = 
 (`
 <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
-وقت الرصد :1:21 مساءً 
+وقت الرصد :1:41 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/cMQp7ZwP2LGFqzTD6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/vb6AiU52hT5bzMBHA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1190,7 +1138,7 @@ Raei[15].bindPopup(popR15)
 
 
 Raei[16] = L.marker(
-[17.453701, 42.980018],
+[27.778004, 44.519999],
 {});
 
 
@@ -1206,7 +1154,7 @@ var infoWindowR16 =
 وقت الرصد :5:29 مساءً 
 `+'<br>'+
 
-`<a href="https://goo.gl/maps/dH7CZwrxbAG57kEp6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+`<a href="https://goo.gl/maps/FJ75DsRj76U2CVAh8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
 + `</div>`
 
 
@@ -1246,733 +1194,2423 @@ Raei[17].bindPopup(popR17)
 ;
 
 
+Raei[18] = L.marker(
+[27.270165, 45.125615],
+{});
+
+
+Raei[18].setIcon(iconRaei);
+
+
+var popR18 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowR18 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:29 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/PvaEuMHqzHFLL3GT8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popR18.setContent(infoWindowR18);
+
+
+Raei[18].bindPopup(popR18)
+;
+
+
+Raei[19] = L.marker(
+    [27.097007, 45.119087],
+    {});
+    
+    
+    Raei[19].setIcon(iconRaei);
+    
+    
+    var popR19 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowR19 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :5:29 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/1pkFdL4JAQDToeFp7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popR19.setContent(infoWindowR19);
+    
+    
+    Raei[19].bindPopup(popR19)
+    ;
+
+
+    Raei[20] = L.marker(
+    [25.394841, 46.661110],
+    {});
+    
+    
+    Raei[20].setIcon(iconRaei);
+    
+    
+    var popR20 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowR20 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :5:29 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/YoFxQx5wVmCfRdBv9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popR20.setContent(infoWindowR20);
+    
+    
+    Raei[20].bindPopup(popR20)
+    ;
+
+
+    Raei[21] = L.marker(
+    [21.821926, 49.704317],
+    {});
+    
+    
+    Raei[21].setIcon(iconRaei);
+    
+    
+    var popR21 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowR21 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :5:29 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/F51XXRMaDkMCPyCr8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popR21.setContent(infoWindowR21);
+    
+    
+    Raei[21].bindPopup(popR21)
+    ;
+
+    Raei[22] = L.marker(
+    [21.111354, 49.259365],
+    {});
+    
+    
+    Raei[22].setIcon(iconRaei);
+    
+    
+    var popR22 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowR22 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :5:29 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/7iDCdP6Bda8TpRrZ9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popR22.setContent(infoWindowR22);
+    
+    
+    Raei[22].bindPopup(popR22)
+    ;
+
+    Raei[23] = L.marker(
+    [24.135121, 44.015099],
+    {});
+    
+    
+    Raei[23].setIcon(iconRaei);
+    
+    
+    var popR23 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowR23 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :5:29 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/iZg2fN7gRCwGU9Fx6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popR23.setContent(infoWindowR23);
+    
+    
+    Raei[23].bindPopup(popR23)
+    ;
+
+
+
+
+
             
         
 
             // ********* end raei *********** 
+
+
+             // ********** Said *********** 
+
+
+           
+ Said[0] = L.marker(
+    [21.832843, 42.181284],
+    {});
+
+Said[0].setIcon(iconSaid);
+
+
+var popS0 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS0 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:49 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/M3nSVV8SVPk9cfvi9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);  
+   popS0.setContent(infoWindowS0);
+
+
+Said[0].bindPopup(popS0)
+;
+
+
+
+
+
+
+
+
+ Said[1] = L.marker(
+    [24.531784, 42.629443],
+    {});
+
+
+Said[1].setIcon(iconSaid);
+
+
+var popS1= L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS1=
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:23 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/hbAPWaz9W7pnngm5A" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);             popS1.setContent(infoWindowS1);
+
+
+Said[1].bindPopup(popS1)
+;
+
+
+
+
+ Said[2] = L.marker(
+    [24.634036, 42.506356],
+    {});
+
+Said[2].setIcon(iconSaid);
+
+
+var popS2 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS2 = (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :7:14 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/W8aPEkDgXxzPeHQp7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS2.setContent(infoWindowS2);
+
+
+Said[2].bindPopup(popS2)
+;
+
+
+
+
+
+ Said[3] = L.marker(
+    [25.503534, 42.603854],
+    {});
+
+
+Said[3].setIcon(iconSaid);
+
+
+var popS3 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS3 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :9:11 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/LfokCPWQK2ucn4qk7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popS3.setContent(infoWindowS3);
+
+
+Said[3].bindPopup(popS3)
+;
+
+
+
+Said[4] = L.marker(
+    [22.657877, 42.672513],
+    {});
+
+
+Said[4].setIcon(iconSaid);
+
+
+var popS4 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS4 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :12:29 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/cmsSSSKnrTaU7WCJ9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popS4.setContent(infoWindowS4);
+
+
+Said[4].bindPopup(popS4)
+;
+
+Said[5] = L.marker(
+[19.780645, 45.884679],
+{});
+
+
+Said[5].setIcon(iconSaid);
+
+
+var popS5 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS5 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:55 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/X61Q1z2vPLc2UAhK7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS5.setContent(infoWindowS5);
+
+
+Said[5].bindPopup(popS5)
+;
+
+
+Said[6] = L.marker(
+[22.593551, 42.269103],
+{});
+
+
+Said[6].setIcon(iconSaid);
+
+
+var popS6 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS6 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :6:36 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/sN1Swy5dk9otLfyY7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS6.setContent(infoWindowS6);
+
+
+Said[6].bindPopup(popS6)
+;
+
+Said[7] = L.marker(
+[22.342284, 41.760980],
+{});
+
+
+Said[7].setIcon(iconSaid);
+
+
+var popS7 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS7 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :9:47 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/D6zPgoHF4d2u3kN89" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS7.setContent(infoWindowS7);
+
+
+Said[7].bindPopup(popS7)
+;
+
+Said[8] = L.marker(
+[21.742751, 42.102924],
+{});
+
+
+Said[8].setIcon(iconSaid);
+
+
+var popS8 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS8 = 
+(`
+<div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
+وقت الرصد :1:53 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/Ukdn2z1zZRPN6qBT9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS8.setContent(infoWindowS8);
+
+
+Said[8].bindPopup(popS8)
+;
+
+Said[9] = L.marker(
+[19.405561, 42.501173],
+{});
+
+
+Said[9].setIcon(iconSaid);
+
+
+var popS9 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS9 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:50 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/dSKFbhTBLK1jfg1z6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS9.setContent(infoWindowS9);
+
+
+Said[9].bindPopup(popS9)
+;
+
+Said[10] = L.marker(
+[19.051574, 42.370705],
+{});
+
+
+Said[10].setIcon(iconSaid);
+
+
+var popS10 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS10 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :2:58 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/4F7so3cK2vWPQsvMA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS10.setContent(infoWindowS10);
+
+
+Said[10].bindPopup(popS10)
+;
+
+Said[11] = L.marker(
+[23.276523, 46.561984],
+{});
+
+
+Said[11].setIcon(iconSaid);
+
+
+var popS11 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS11 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :4:57 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/XaWS1R7zdAwqTXu2A" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS11.setContent(infoWindowS11);
+
+
+Said[11].bindPopup(popS11)
+;
+
+Said[12] = L.marker(
+[23.434911, 46.541208],
+{});
+
+
+Said[12].setIcon(iconSaid);
+
+
+var popS12 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS12 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :6:36 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/2nsnr6tn2nnWGMVc9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS12.setContent(infoWindowS12);
+
+
+Said[12].bindPopup(popS12)
+;
+
+Said[13] = L.marker(
+[30.545052, 39.261420],
+{});
+
+
+Said[13].setIcon(iconSaid);
+
+
+var popS13 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS13 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :2:27 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/4dqjtkBuGqheUTVYA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS13.setContent(infoWindowS13);
+
+
+Said[13].bindPopup(popS13)
+;
+
+Said[14] = L.marker(
+[23.460114, 46.250065],
+{});
+
+
+Said[14].setIcon(iconSaid);
+
+
+var popS14 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS14 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :6:31 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/e4gZVkDZnsAnYSYu5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS14.setContent(infoWindowS14);
+
+
+Said[14].bindPopup(popS14)
+;
+
+Said[15] = L.marker(
+[26.668958, 37.730162],
+{});
+
+
+Said[15].setIcon(iconSaid);
+
+
+var popS15 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS15 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :1:21 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/RNueyWdDdh4H2BkW7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS15.setContent(infoWindowS15);
+
+
+Said[15].bindPopup(popS15)
+;
+
+
+Said[16] = L.marker(
+[27.040473, 37.496437],
+{});
+
+
+Said[16].setIcon(iconSaid);
+
+
+var popS16 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS16 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:49 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/bqxei179Hoe7X1dRA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS16.setContent(infoWindowS16);
+
+
+Said[16].bindPopup(popS16)
+;
+
+Said[17] = L.marker(
+[27.295829, 36.596926],
+{});
+
+
+Said[17].setIcon(iconSaid);
+
+
+var popS17 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS17 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:29 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/EeHo4Ax1tMM3LyxSA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS17.setContent(infoWindowS17);
+
+
+Said[17].bindPopup(popS17)
+;
+
+
+Said[18] = L.marker(
+[27.567035, 36.236432],
+{});
+
+
+Said[18].setIcon(iconSaid);
+
+
+var popS18 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowS18 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:19 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/BvynT8Z2xKjLhtsz5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popS18.setContent(infoWindowS18);
+
+
+Said[18].bindPopup(popS18)
+;
+
+
+Said[19] = L.marker(
+    [28.543828, 36.156776],
+    {});
+    
+    
+    Said[19].setIcon(iconSaid);
+    
+    
+    var popS19 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowS19 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :1:37 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/VNLgDtfor5A5w7Tm9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popS19.setContent(infoWindowS19);
+    
+    
+    Said[19].bindPopup(popS19)
+    ;
+
+
+    Said[20] = L.marker(
+    [28.468559, 35.421202],
+    {});
+    
+    
+    Said[20].setIcon(iconSaid);
+    
+    
+    var popS20 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowS20 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :7:19 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/Hn5ccfVAFaYNDsCC9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popS20.setContent(infoWindowS20);
+    
+    
+    Said[20].bindPopup(popS20)
+    ;
+
+
+    Said[21] = L.marker(
+    [27.225812, 39.659854],
+    {});
+    
+    
+    Said[21].setIcon(iconSaid);
+    
+    
+    var popS21 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowS21 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :6:24 صباحًا 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/4ghqSWjQuzuLhP4p9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popS21.setContent(infoWindowS21);
+    
+    
+    Said[21].bindPopup(popS21)
+    ;
+
+    Said[22] = L.marker(
+    [24.182031, 44.437180],
+    {});
+    
+    
+    Said[22].setIcon(iconSaid);
+    
+    
+    var popS22 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowS22 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :2:13 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/SmQoVfWbVCLD3ax3A" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popS22.setContent(infoWindowS22);
+    
+    
+    Said[22].bindPopup(popS22)
+    ;
+
+    Said[23] = L.marker(
+    [24.725212, 46.258834],
+    {});
+    
+    
+    Said[23].setIcon(iconSaid);
+    
+    
+    var popS23 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowS23 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :8:56 صباحًا 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/TcbMLX8jxNzxQxXx7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popS23.setContent(infoWindowS23);
+    
+    
+    Said[23].bindPopup(popS23)
+    ;
+
+
+
+
+
+            
+        
+
+            // ********* end Said *********** 
+
+
+             // ********** Eshaal *********** 
+
+
+           
+ Eshaal[0] = L.marker(
+    [24.993292, 46.596054],
+    {});
+
+Eshaal[0].setIcon(iconEshaal);
+
+
+var popESH0 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH0 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:09 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/oLJxUchDTfwwGm4i8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);  
+   popESH0.setContent(infoWindowESH0);
+
+
+Eshaal[0].bindPopup(popESH0)
+;
+
+
+
+
+
+
+
+
+ Eshaal[1] = L.marker(
+    [24.964919, 46.850090],
+    {});
+
+
+Eshaal[1].setIcon(iconEshaal);
+
+
+var popESH1= L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH1=
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :7:56 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/8CdiCCNtgUfMYsYA6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);             popESH1.setContent(infoWindowESH1);
+
+
+Eshaal[1].bindPopup(popESH1)
+;
+
+
+
+
+ Eshaal[2] = L.marker(
+    [24.665065, 46.737217],
+    {});
+
+Eshaal[2].setIcon(iconEshaal);
+
+
+var popESH2 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH2 = (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:18 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/6hfngjissVpSAJbw7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH2.setContent(infoWindowESH2);
+
+
+Eshaal[2].bindPopup(popESH2)
+;
+
+
+
+
+
+ Eshaal[3] = L.marker(
+    [25.683810, 46.218526],
+    {});
+
+
+Eshaal[3].setIcon(iconEshaal);
+
+
+var popESH3 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH3 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :9:25 صباحًا 
+`+'<br>'+
+
+`<a href="غ" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popESH3.setContent(infoWindowESH3);
+
+
+Eshaal[3].bindPopup(popESH3)
+;
+
+
+
+Eshaal[4] = L.marker(
+    [25.565874, 45.477973],
+    {});
+
+
+Eshaal[4].setIcon(iconEshaal);
+
+
+var popESH4 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH4 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:19 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/f8gxaqAkHBnc3Ggq9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popESH4.setContent(infoWindowESH4);
+
+
+Eshaal[4].bindPopup(popESH4)
+;
+
+Eshaal[5] = L.marker(
+[27.506224, 43.868801],
+{});
+
+
+Eshaal[5].setIcon(iconEshaal);
+
+
+var popESH5 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH5 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:51 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/FAPjE5d8Vp7TGdgHA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH5.setContent(infoWindowESH5);
+
+
+Eshaal[5].bindPopup(popESH5)
+;
+
+
+Eshaal[6] = L.marker(
+[24.357510, 42.772910],
+{});
+
+
+Eshaal[6].setIcon(iconEshaal);
+
+
+var popESH6 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH6 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:31 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/9Hk96Ldt4fEEK7Rj9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH6.setContent(infoWindowESH6);
+
+
+Eshaal[6].bindPopup(popESH6)
+;
+
+Eshaal[7] = L.marker(
+[22.956278, 41.188127],
+{});
+
+
+Eshaal[7].setIcon(iconEshaal);
+
+
+var popESH7 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH7 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :9:47 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/1pi7JGxaSkEaP1M97" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH7.setContent(infoWindowESH7);
+
+
+Eshaal[7].bindPopup(popESH7)
+;
+
+Eshaal[8] = L.marker(
+[25.351004, 49.710927],
+{});
+
+
+Eshaal[8].setIcon(iconEshaal);
+
+
+var popESH8 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH8 = 
+(`
+<div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:53 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/QeUNy5o6uUESuZXF8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH8.setContent(infoWindowESH8);
+
+
+Eshaal[8].bindPopup(popESH8)
+;
+
+Eshaal[9] = L.marker(
+[25.316953, 49.558057],
+{});
+
+
+Eshaal[9].setIcon(iconEshaal);
+
+
+var popESH9 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH9 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:55 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/LUYjtxQwnHTUNSc26" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH9.setContent(infoWindowESH9);
+
+
+Eshaal[9].bindPopup(popESH9)
+;
+
+Eshaal[10] = L.marker(
+[25.129367, 49.299868],
+{});
+
+
+Eshaal[10].setIcon(iconEshaal);
+
+
+var popESH10 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowESH10 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :2:48 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/TiqQQXphc1pB84zd8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popESH10.setContent(infoWindowESH10);
+
+
+Eshaal[10].bindPopup(popESH10)
+;
+
+        
+
+            // ********* end Eshaal *********** 
+
+
+             // ********** Naqel *********** 
+
+
+           
+ Naqel[0] = L.marker(
+    [23.455559, 47.674920],
+    {});
+
+Naqel[0].setIcon(iconNaqel);
+
+
+var popN0 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN0 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:49 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/LGdjyW2ATeTq8meS7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);  
+   popN0.setContent(infoWindowN0);
+
+
+Naqel[0].bindPopup(popN0)
+;
+
+
+
+
+
+
+
+
+ Naqel[1] = L.marker(
+    [19.661870, 47.332954],
+    {});
+
+
+Naqel[1].setIcon(iconNaqel);
+
+
+var popN1= L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN1=
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :7:23 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/rYUByBo3xkjVypQ79" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);             popN1.setContent(infoWindowN1);
+
+
+Naqel[1].bindPopup(popN1)
+;
+
+
+
+
+ Naqel[2] = L.marker(
+    [18.626613, 46.610598],
+    {});
+
+Naqel[2].setIcon(iconNaqel);
+
+
+var popN2 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN2 = (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:17 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/3nWvXZwt3E9s7LVWA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN2.setContent(infoWindowN2);
+
+
+Naqel[2].bindPopup(popN2)
+;
+
+
+
+
+
+ Naqel[3] = L.marker(
+    [18.250764, 45.883435],
+    {});
+
+
+Naqel[3].setIcon(iconNaqel);
+
+
+var popN3 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN3 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :9:22 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/GNTLa28nC1JdMRBh6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popN3.setContent(infoWindowN3);
+
+
+Naqel[3].bindPopup(popN3)
+;
+
+
+
+Naqel[4] = L.marker(
+    [19.515048, 42.569668],
+    {});
+
+
+Naqel[4].setIcon(iconNaqel);
+
+
+var popN4 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN4 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:19 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/rrMGH9xwLZAk5yNq5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popN4.setContent(infoWindowN4);
+
+
+Naqel[4].bindPopup(popN4)
+;
+
+Naqel[5] = L.marker(
+[23.115353, 41.762490],
+{});
+
+
+Naqel[5].setIcon(iconNaqel);
+
+
+var popN5 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN5 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:55 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/FwVSqAiwWaGUVVPu8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN5.setContent(infoWindowN5);
+
+
+Naqel[5].bindPopup(popN5)
+;
+
+
+Naqel[6] = L.marker(
+[22.762193, 41.430492],
+{});
+
+
+Naqel[6].setIcon(iconNaqel);
+
+
+var popN6 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN6 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:26 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/mKFpaqWe5HEFwCUm6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN6.setContent(infoWindowN6);
+
+
+Naqel[6].bindPopup(popN6)
+;
+
+Naqel[7] = L.marker(
+[22.775177, 40.924901],
+{});
+
+
+Naqel[7].setIcon(iconNaqel);
+
+
+var popN7 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN7 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت الرصد :11:47 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/YE3yPCfSZV2QoqkH8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN7.setContent(infoWindowN7);
+
+
+Naqel[7].bindPopup(popN7)
+;
+
+Naqel[8] = L.marker(
+[22.111356, 40.387939],
+{});
+
+
+Naqel[8].setIcon(iconNaqel);
+
+
+var popN8 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN8 = 
+(`
+<div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
+وقت الرصد :10:33 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/dGVdPHCP4wxsRVpW6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN8.setContent(infoWindowN8);
+
+
+Naqel[8].bindPopup(popN8)
+;
+
+Naqel[9] = L.marker(
+[22.341140, 40.390337],
+{});
+
+
+Naqel[9].setIcon(iconNaqel);
+
+
+var popN9 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN9 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :12:50 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/ZyjGrC71Cn6rnyw96" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN9.setContent(infoWindowN9);
+
+
+Naqel[9].bindPopup(popN9)
+;
+
+Naqel[10] = L.marker(
+[24.807266, 46.147854],
+{});
+
+
+Naqel[10].setIcon(iconNaqel);
+
+
+var popN10 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN10 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :2:08 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/EZzyEWFhi2bgWNjy5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN10.setContent(infoWindowN10);
+
+
+Naqel[10].bindPopup(popN10)
+;
+
+Naqel[11] = L.marker(
+[25.325995, 46.478812],
+{});
+
+
+Naqel[11].setIcon(iconNaqel);
+
+
+var popN11 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN11 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :4:11 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/qscN2G8Dob6bmwNy9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN11.setContent(infoWindowN11);
+
+
+Naqel[11].bindPopup(popN11)
+;
+
+Naqel[12] = L.marker(
+[25.368042, 46.629354],
+{});
+
+
+Naqel[12].setIcon(iconNaqel);
+
+
+var popN12 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN12 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:46 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/8oxM21y6p52Xt9ny8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN12.setContent(infoWindowN12);
+
+
+Naqel[12].bindPopup(popN12)
+;
+
+Naqel[13] = L.marker(
+[25.321660, 46.734577],
+{});
+
+
+Naqel[13].setIcon(iconNaqel);
+
+
+var popN13 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN13 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :3:27 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/Ja19pytcMVngaAif8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN13.setContent(infoWindowN13);
+
+
+Naqel[13].bindPopup(popN13)
+;
+
+Naqel[14] = L.marker(
+[22.001629, 48.835000],
+{});
+
+
+Naqel[14].setIcon(iconNaqel);
+
+
+var popN14 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN14 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :6:21 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/qqem6JW54h2HniZE6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN14.setContent(infoWindowN14);
+
+
+Naqel[14].bindPopup(popN14)
+;
+
+Naqel[15] = L.marker(
+[20.241598, 46.426231],
+{});
+
+
+Naqel[15].setIcon(iconNaqel);
+
+
+var popN15 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN15 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :1:43 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/EJ5psPNt9rTGMNiL8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN15.setContent(infoWindowN15);
+
+
+Naqel[15].bindPopup(popN15)
+;
+
+
+Naqel[16] = L.marker(
+[22.800262, 46.084271],
+{});
+
+
+Naqel[16].setIcon(iconNaqel);
+
+
+var popN16 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN16 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :5:49 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/FfdaeJQhihap6mpJA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN16.setContent(infoWindowN16);
+
+
+Naqel[16].bindPopup(popN16)
+;
+
+Naqel[17] = L.marker(
+[23.178899, 45.821280],
+{});
+
+
+Naqel[17].setIcon(iconNaqel);
+
+
+var popN17 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN17 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:29 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/MtdfQQegBnb72cxH7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN17.setContent(infoWindowN17);
+
+
+Naqel[17].bindPopup(popN17)
+;
+
+
+Naqel[18] = L.marker(
+[22.881290, 40.327404],
+{});
+
+
+Naqel[18].setIcon(iconNaqel);
+
+
+var popN18 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowN18 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت الرصد :8:49 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/K9B6DWcbGAQT6tPA6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popN18.setContent(infoWindowN18);
+
+
+Naqel[18].bindPopup(popN18)
+;
+
+
+Naqel[19] = L.marker(
+    [28.329908, 41.954804],
+    {});
     
     
-            var marker_bb5179ba51cc4c16bd8c08b978ee9526 = L.marker(
-                [22.44313737, 120.5619568],
-                {}
-            ).addTo(map);
-        
+    Naqel[19].setIcon(iconNaqel);
     
-            var icon_400695f58731455e97d3eb2b2d870cdf = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_bb5179ba51cc4c16bd8c08b978ee9526.setIcon(icon_400695f58731455e97d3eb2b2d870cdf);
-        
+    
+    var popN19 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowN19 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :7:19 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/gw9sNW6dBXypy3Du6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popN19.setContent(infoWindowN19);
+    
+    
+    Naqel[19].bindPopup(popN19)
+    ;
+
+
+    Naqel[20] = L.marker(
+    [28.266946, 41.300699],
+    {});
+    
+    
+    Naqel[20].setIcon(iconNaqel);
     
-        var popup_3645897f8f0b48aab8050833ba7274b2 = L.popup({"maxWidth": "100%"});
+    
+    var popN20 = L.popup({"maxWidth": "100%"});
+    
+    
+    var infoWindowN20 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت الرصد :1:29 مساءً 
+    `+'<br>'+
+    
+    `<a href="https://goo.gl/maps/w832DgYbXnxjWQzy7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
+    
+    
+    );
+    popN20.setContent(infoWindowN20);
+    
+    
+    Naqel[20].bindPopup(popN20)
+    ;
+ 
+
+            // ********* end Naqel *********** 
+
+
+
+             // ********** Balag *********** 
+
+
+           
+ Balag[0] = L.marker(
+    [27.477876, 41.534153],
+    {});
+
+Balag[0].setIcon(iconBalag);
+
+
+var popB0 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB0 =
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :5:49 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/fDKeSih1FKJE5tNg6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);  
+   popB0.setContent(infoWindowB0);
+
+
+Balag[0].bindPopup(popB0)
+;
+
+
+
+
+
+
+
+
+ Balag[1] = L.marker(
+    [26.516114, 44.184599],
+    {});
+
+
+Balag[1].setIcon(iconBalag);
+
+
+var popB1= L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB1=
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :8:33 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/99Q4YowJeeevAdLNA" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);             popB1.setContent(infoWindowB1);
+
+
+Balag[1].bindPopup(popB1)
+;
+
+
+
+
+ Balag[2] = L.marker(
+    [26.549983, 44.106230],
+    {});
+
+Balag[2].setIcon(iconBalag);
+
+
+var popB2 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB2 = (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :3:17 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/DMXh31BndWPwfLEv5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB2.setContent(infoWindowB2);
+
+
+Balag[2].bindPopup(popB2)
+;
+
+
+
+
+
+ Balag[3] = L.marker(
+    [26.034195, 43.599448],
+    {});
+
+
+Balag[3].setIcon(iconBalag);
+
+
+var popB3 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB3 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :10:25 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/qMy4k3krftF32gyQ8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popB3.setContent(infoWindowB3);
+
+
+Balag[3].bindPopup(popB3)
+;
+
+
+
+Balag[4] = L.marker(
+    [25.216364, 42.370662],
+    {});
+
+
+Balag[4].setIcon(iconBalag);
+
+
+var popB4 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB4 = 
+    (`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :11:24 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/CydFVY3zGwJXppSu9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+     popB4.setContent(infoWindowB4);
+
+
+Balag[4].bindPopup(popB4)
+;
+
+Balag[5] = L.marker(
+[23.312240, 41.103109],
+{});
+
+
+Balag[5].setIcon(iconBalag);
+
+
+var popB5 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB5 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :10:55 صباحًا 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/peWDrLr3AyrpvF8h6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB5.setContent(infoWindowB5);
+
+
+Balag[5].bindPopup(popB5)
+;
+
+
+Balag[6] = L.marker(
+[23.087882, 40.856941],
+{});
+
+
+Balag[6].setIcon(iconBalag);
+
+
+var popB6 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB6 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :3:26 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/VSQbyYVhr16KFQGH6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB6.setContent(infoWindowB6);
+
+
+Balag[6].bindPopup(popB6)
+;
+
+Balag[7] = L.marker(
+[22.507426, 39.800188],
+{});
+
+
+Balag[7].setIcon(iconBalag);
+
+
+var popB7 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB7 = 
+(`
+<div style="width: 120px; height: 37px; font-size:13px; font-weight: bold;">
+وقت البلاغ :9:57 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/PkevgxBg2L52A5cY9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB7.setContent(infoWindowB7);
+
+
+Balag[7].bindPopup(popB7)
+;
+
+Balag[8] = L.marker(
+[19.461361, 42.469860],
+{});
+
+
+Balag[8].setIcon(iconBalag);
+
+
+var popB8 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB8 = 
+(`
+<div style="width: 120px; height: 38px; font-size:13px; font-weight: bold;">
+وقت البلاغ :10:54 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/i521pvVGJduUHcTs8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB8.setContent(infoWindowB8);
+
+
+Balag[8].bindPopup(popB8)
+;
+
+Balag[9] = L.marker(
+[19.178200, 42.037955],
+{});
+
+
+Balag[9].setIcon(iconBalag);
+
+
+var popB9 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB9 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :11:40 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/8cwEZpneJ68chiD57" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB9.setContent(infoWindowB9);
+
+
+Balag[9].bindPopup(popB9)
+;
+
+Balag[10] = L.marker(
+[20.544681, 40.636635],
+{});
+
+
+Balag[10].setIcon(iconBalag);
+
+
+var popB10 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB10 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :2:18 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/E21fHk1aPwGYN3Xh9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB10.setContent(infoWindowB10);
+
+
+Balag[10].bindPopup(popB10)
+;
+
+Balag[11] = L.marker(
+[23.580944, 40.068087],
+{});
+
+
+Balag[11].setIcon(iconBalag);
+
+
+var popB11 = L.popup({"maxWidth": "100%"});
+
+
+var infoWindowB11 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :5:51 مساءً 
+`+'<br>'+
+
+`<a href="https://goo.gl/maps/3LSHjbY6zGoopu7e6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
+
+
+);
+popB11.setContent(infoWindowB11);
+
+
+Balag[11].bindPopup(popB11)
+;
+
+Balag[12] = L.marker(
+[25.278820, 37.901029],
+{});
+
+
+Balag[12].setIcon(iconBalag);
+
+
+var popB12 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_220bebbc78a74c4f843f985ccd8d460f = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuS4reato+i3rzxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT00NCZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjE0MjM0NDkyMCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_3645897f8f0b48aab8050833ba7274b2.setContent(i_frame_220bebbc78a74c4f843f985ccd8d460f);
-        
 
-        marker_bb5179ba51cc4c16bd8c08b978ee9526.bindPopup(popup_3645897f8f0b48aab8050833ba7274b2)
-        ;
+var infoWindowB12 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :7:46 صباحًا 
+`+'<br>'+
 
-        
-    
-    
-            var marker_286bc55c93f4409f94125905fff2a11d = L.marker(
-                [22.40408951, 120.588675],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_eea251b3715843b98fb2e9ac9a1fcaf8 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_286bc55c93f4409f94125905fff2a11d.setIcon(icon_eea251b3715843b98fb2e9ac9a1fcaf8);
-        
-    
-        var popup_dcdd0c6ffa3c43139f380a74d7c092f4 = L.popup({"maxWidth": "100%"});
+`<a href="https://goo.gl/maps/c6kR69oJoxXaQL8K6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        
-            var i_frame_3090359d65844685bbba2390bf47f7ce = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuaYseaIkOaxvei7ijxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT02JmZwcz0mTD0yMGY0NGEwYjE5MGI2ZWJlZTJhY2NmNmUxMGQ2YWNlMyYxNjMyMTQyOTYzNjkzIHdpZHRoPSIzNTAiIGhlaWdodD0iMzUwIj4=" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_dcdd0c6ffa3c43139f380a74d7c092f4.setContent(i_frame_3090359d65844685bbba2390bf47f7ce);
-        
 
-        marker_286bc55c93f4409f94125905fff2a11d.bindPopup(popup_dcdd0c6ffa3c43139f380a74d7c092f4)
-        ;
+);
+popB12.setContent(infoWindowB12);
 
-        
-    
-    
-            var marker_e135da90572345a48371c8b0a693d17e = L.marker(
-                [22.38743926, 120.5939956],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_2d896773553b4f7aa650f89056ae3683 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_e135da90572345a48371c8b0a693d17e.setIcon(icon_2d896773553b4f7aa650f89056ae3683);
-        
-    
-        var popup_dcd6c7eb47394068a8314989681b9d9d = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_7285714292924f3c81b270d4f9b17da9 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOuelpeeZvOmHo+WFt+ihjDxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT03JmZwcz0mTD0yMGY0NGEwYjE5MGI2ZWJlZTJhY2NmNmUxMGQ2YWNlMyYxNjMyMTQzMjkzMzk5IHdpZHRoPSIzNTAiIGhlaWdodD0iMzUwIj4=" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_dcd6c7eb47394068a8314989681b9d9d.setContent(i_frame_7285714292924f3c81b270d4f9b17da9);
-        
+Balag[12].bindPopup(popB12)
+;
 
-        marker_e135da90572345a48371c8b0a693d17e.bindPopup(popup_dcd6c7eb47394068a8314989681b9d9d)
-        ;
+Balag[13] = L.marker(
+[25.590736, 39.869631],
+{});
 
-        
-    
-    
-            var marker_60f62a207138435a8abe5a6645e9d9ab = L.marker(
-                [22.38108094, 120.5965583],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_241fe8dde268493fbcf5ca9a952fe9af = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_60f62a207138435a8abe5a6645e9d9ab.setIcon(icon_241fe8dde268493fbcf5ca9a952fe9af);
-        
-    
-        var popup_343df29fca5a4b88952f40cffab0a727 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_6e8771699ce2421dabc53b681985aca9 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOuS4gOiqoOS6lOmHkeeZvuiyqDxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT0zMyZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjE0MzQ4ODIxOCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_343df29fca5a4b88952f40cffab0a727.setContent(i_frame_6e8771699ce2421dabc53b681985aca9);
-        
+Balag[13].setIcon(iconBalag);
 
-        marker_60f62a207138435a8abe5a6645e9d9ab.bindPopup(popup_343df29fca5a4b88952f40cffab0a727)
-        ;
 
-        
-    
-    
-            var marker_85416ad7739f4be19308f71bd373eedc = L.marker(
-                [22.37720252, 120.5986192],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_a79182f52a7e412688c7d20b7e6c0466 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_85416ad7739f4be19308f71bd373eedc.setIcon(icon_a79182f52a7e412688c7d20b7e6c0466);
-        
-    
-        var popup_61faee994f7a4b2fb44a71a8ded280d4 = L.popup({"maxWidth": "100%"});
+var popB13 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_812deb57a0a94943a11842130a9bc398 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOuacqOmLpOmAoOaouDxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT04JmZwcz0mTD0yMGY0NGEwYjE5MGI2ZWJlZTJhY2NmNmUxMGQ2YWNlMyYxNjMyMTQzOTk1NDYzIHdpZHRoPSIzNTAiIGhlaWdodD0iMzUwIj4=" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_61faee994f7a4b2fb44a71a8ded280d4.setContent(i_frame_812deb57a0a94943a11842130a9bc398);
-        
 
-        marker_85416ad7739f4be19308f71bd373eedc.bindPopup(popup_61faee994f7a4b2fb44a71a8ded280d4)
-        ;
+var infoWindowB13 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :2:57 مساءً 
+`+'<br>'+
 
-        
-    
-    
-            var marker_cced249287d245adbf2b866097c2c0e6 = L.marker(
-                [22.36887171, 120.6071082],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_49379eebf119414b93d6b6d4b829a8aa = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_cced249287d245adbf2b866097c2c0e6.setIcon(icon_49379eebf119414b93d6b6d4b829a8aa);
-        
-    
-        var popup_04ee2f4e6d8045818822b6eb6b8e7845 = L.popup({"maxWidth": "100%"});
+`<a href="https://goo.gl/maps/66PNaVNH5mVMTNiN9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        
-            var i_frame_2d7968d5c0cc47fa863866d3638f4d78 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOuW7uuiIiOaxvei7ijxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT0zNCZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjE0NDAyODMwOSB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_04ee2f4e6d8045818822b6eb6b8e7845.setContent(i_frame_2d7968d5c0cc47fa863866d3638f4d78);
-        
 
-        marker_cced249287d245adbf2b866097c2c0e6.bindPopup(popup_04ee2f4e6d8045818822b6eb6b8e7845)
-        ;
+);
+popB13.setContent(infoWindowB13);
 
-        
-    
-    
-            var marker_f52bd3fed59d4309931e7caaf6de77fc = L.marker(
-                [22.34700178, 120.6092807],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_e6b83eaeb4404916997542628b92e74f = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_f52bd3fed59d4309931e7caaf6de77fc.setIcon(icon_e6b83eaeb4404916997542628b92e74f);
-        
-    
-        var popup_2533d49d03b94ef4b01d99a18050f16e = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_49ef855747324c6faad74da644ce39cd = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuS4reWxsei3rzxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT00OCZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjE0NDQwODY5NSB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_2533d49d03b94ef4b01d99a18050f16e.setContent(i_frame_49ef855747324c6faad74da644ce39cd);
-        
+Balag[13].bindPopup(popB13)
+;
 
-        marker_f52bd3fed59d4309931e7caaf6de77fc.bindPopup(popup_2533d49d03b94ef4b01d99a18050f16e)
-        ;
+Balag[14] = L.marker(
+[30.022718, 38.284848],
+{});
 
-        
-    
-    
-            var marker_de6d25ce14d14a33ba054ffdf7a0f16c = L.marker(
-                [22.20321496, 120.6881084],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_29dfdac19acc4d84a4f59dcd867e5ba8 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
-            );
-            marker_de6d25ce14d14a33ba054ffdf7a0f16c.setIcon(icon_29dfdac19acc4d84a4f59dcd867e5ba8);
-        
-    
-        var popup_e4796ddf0229435b80b19dd8cce607fd = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_ced86dcc7af44845aef99c29a19670e9 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuelpeeRnuaxoOS4iumjr+WMhTxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT05JmZwcz0mTD0yMGY0NGEwYjE5MGI2ZWJlZTJhY2NmNmUxMGQ2YWNlMyYxNjMyMTQ0NjQ1OTI0IHdpZHRoPSIzNTAiIGhlaWdodD0iMzUwIj4=" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_e4796ddf0229435b80b19dd8cce607fd.setContent(i_frame_ced86dcc7af44845aef99c29a19670e9);
-        
+Balag[14].setIcon(iconBalag);
 
-        marker_de6d25ce14d14a33ba054ffdf7a0f16c.bindPopup(popup_e4796ddf0229435b80b19dd8cce607fd)
-        ;
 
-        
-    
-    
-            var marker_105685bd8bf645bfbc2f96932660fbe4 = L.marker(
-                [22.1946386, 120.6919571],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_173bbca60c1843e7a69e61c71a0a4c77 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_105685bd8bf645bfbc2f96932660fbe4.setIcon(icon_173bbca60c1843e7a69e61c71a0a4c77);
-        
-    
-        var popup_6aea3c251c6c441081cb275ec3ad84b5 = L.popup({"maxWidth": "100%"});
+var popB14 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_18be1f3f0a1e485ab0d6e29a0b1319df = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOualk+a4r+iAgeihlzxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT0xMCZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjE0NDg1ODI4MyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_6aea3c251c6c441081cb275ec3ad84b5.setContent(i_frame_18be1f3f0a1e485ab0d6e29a0b1319df);
-        
 
-        marker_105685bd8bf645bfbc2f96932660fbe4.bindPopup(popup_6aea3c251c6c441081cb275ec3ad84b5)
-        ;
+var infoWindowB14 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :6:21 مساءً 
+`+'<br>'+
 
-        
-    
-    
-            var marker_2fd5684dcdca4b70a6d326f477421dd2 = L.marker(
-                [22.072795, 120.7139409],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_686f7f9598364798bbf2481dbbac25e6 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_2fd5684dcdca4b70a6d326f477421dd2.setIcon(icon_686f7f9598364798bbf2481dbbac25e6);
-        
-    
-        var popup_fa2302a93af0401a8e1b3fd0c5d14d03 = L.popup({"maxWidth": "100%"});
+`<a href="https://goo.gl/maps/YYojggYx9q2HLdaD6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        
-            var i_frame_ef9fd5326835497cbec645ae4b93fbee = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOui7iuWfjui+suacg+i2heW4gjxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT0xMSZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjMxOTI3Nzc3MyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_fa2302a93af0401a8e1b3fd0c5d14d03.setContent(i_frame_ef9fd5326835497cbec645ae4b93fbee);
-        
 
-        marker_2fd5684dcdca4b70a6d326f477421dd2.bindPopup(popup_fa2302a93af0401a8e1b3fd0c5d14d03)
-        ;
+);
+popB14.setContent(infoWindowB14);
 
-        
-    
-    
-            var marker_4eff0ee6697342999fa78e83a11caa8e = L.marker(
-                [22.05594021, 120.7199822],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_1dcadabd4cc84ee3989eb31628128dde = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
-            );
-            marker_4eff0ee6697342999fa78e83a11caa8e.setIcon(icon_1dcadabd4cc84ee3989eb31628128dde);
-        
-    
-        var popup_29c2ce2d5d3f4faf818d4d04e7d2d5ed = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_285d4386e8014f639401db6bf64b8a70 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65bGP5p2x57ij5pS/5bqcIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuW4neWvtueUlee8uOmbnuWivuS4geaXl+iJpuW6lzxicj48aW1nIHNyYz1odHRwOi8vNTkuMTIwLjEyMi41Ni9wbGF5L2xpdmUucGhwP2NhbWVyYT0xMiZmcHM9Jkw9MjBmNDRhMGIxOTBiNmViZWUyYWNjZjZlMTBkNmFjZTMmMTYzMjMxOTgwODM5NiB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_29c2ce2d5d3f4faf818d4d04e7d2d5ed.setContent(i_frame_285d4386e8014f639401db6bf64b8a70);
-        
+Balag[14].bindPopup(popB14)
+;
 
-        marker_4eff0ee6697342999fa78e83a11caa8e.bindPopup(popup_29c2ce2d5d3f4faf818d4d04e7d2d5ed)
-        ;
+Balag[15] = L.marker(
+[28.743725, 45.808241],
+{});
 
-        
-    
-    
-            var marker_cce84525aba241bb9e09191b3a6642c2 = L.marker(
-                [22.49267674, 120.5388255],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_f9918cff870f4dc3a6ebbba72c8021d3 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_cce84525aba241bb9e09191b3a6642c2.setIcon(icon_f9918cff870f4dc3a6ebbba72c8021d3);
-        
-    
-        var popup_0e3772e9445a43fc93c252497c932a90 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_339dccbea8c1496299ebd368c7cd4bf7 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuWPsOezluWKoOayueermSjljZflt54pPGJyPjxpbWcgc3JjPWh0dHBzOi8vdGhiY2N0djEzLnRoYi5nb3YudHcvVDEtNDIzSyszMDA/cmVzb2x1dGlvbj1DSUZfMzUyWDI4OCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_0e3772e9445a43fc93c252497c932a90.setContent(i_frame_339dccbea8c1496299ebd368c7cd4bf7);
-        
+Balag[15].setIcon(iconBalag);
 
-        marker_cce84525aba241bb9e09191b3a6642c2.bindPopup(popup_0e3772e9445a43fc93c252497c932a90)
-        ;
 
-        
-    
-    
-            var marker_3d5579284be0480b894568d4a3f52ddc = L.marker(
-                [22.47956233, 120.5439878],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_e084390866f645d79a9d3585b13d5307 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_3d5579284be0480b894568d4a3f52ddc.setIcon(icon_e084390866f645d79a9d3585b13d5307);
-        
-    
-        var popup_6d44a41e97af48f982cd1e9958c30caf = L.popup({"maxWidth": "100%"});
+var popB15 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_7230a85f63364ad5a2c799c7b9351f73 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOjQyNEsrODUwPGJyPjxpbWcgc3JjPWh0dHBzOi8vdGhiY2N0djEzLnRoYi5nb3YudHcvVDEtNDI0Sys4NTA/cmVzb2x1dGlvbj1DSUZfMzUyWDI4OCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_6d44a41e97af48f982cd1e9958c30caf.setContent(i_frame_7230a85f63364ad5a2c799c7b9351f73);
-        
 
-        marker_3d5579284be0480b894568d4a3f52ddc.bindPopup(popup_6d44a41e97af48f982cd1e9958c30caf)
-        ;
+var infoWindowB15 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :1:51 مساءً 
+`+'<br>'+
 
-        
-    
-    
-            var marker_226ef714503a4811894d78f82d5dc722 = L.marker(
-                [22.44442809, 120.5606403],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_0fd9f9fd1e364ac7a259094f6bfd8fc0 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_226ef714503a4811894d78f82d5dc722.setIcon(icon_0fd9f9fd1e364ac7a259094f6bfd8fc0);
-        
-    
-        var popup_d485f6f4239e460eb39554381ea0f865 = L.popup({"maxWidth": "100%"});
+`<a href="https://goo.gl/maps/oQ4E28euNu6QxqX46" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        
-            var i_frame_6f0947efbb734be98f0006bfe75fdcc8 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuael+S/iumAuOeahOmLvOeuoembnueDpOmbnua1t+murumkkOW7szxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYyMS50aGIuZ292LnR3L1QxLTQyOUsrMDUwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_d485f6f4239e460eb39554381ea0f865.setContent(i_frame_6f0947efbb734be98f0006bfe75fdcc8);
-        
 
-        marker_226ef714503a4811894d78f82d5dc722.bindPopup(popup_d485f6f4239e460eb39554381ea0f865)
-        ;
+);
+popB15.setContent(infoWindowB15);
 
-        
-    
-    
-            var marker_03866ff4b6aa426b905872a9237347cc = L.marker(
-                [22.41592758, 120.5844214],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_0b8ff04ef85a44668057463f494b5415 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_03866ff4b6aa426b905872a9237347cc.setIcon(icon_0b8ff04ef85a44668057463f494b5415);
-        
-    
-        var popup_dff110b8fb7a4e32bb881f83caf2f65c = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_72e54a157c3f47b180b6774628a0d8d6 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOjQ0M0srMDEwPGJyPjxpbWcgc3JjPWh0dHBzOi8vdGhiY2N0djI1LnRoYi5nb3YudHcvVDEtNDMzSyswMTA/cmVzb2x1dGlvbj1DSUZfMzUyWDI4OCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_dff110b8fb7a4e32bb881f83caf2f65c.setContent(i_frame_72e54a157c3f47b180b6774628a0d8d6);
-        
+Balag[15].bindPopup(popB15)
+;
 
-        marker_03866ff4b6aa426b905872a9237347cc.bindPopup(popup_dff110b8fb7a4e32bb881f83caf2f65c)
-        ;
 
-        
-    
-    
-            var marker_aeef4811dc314820a058b10a0a604305 = L.marker(
-                [22.37418351, 120.6015169],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_050079312e3446988ed372530d6d4506 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_aeef4811dc314820a058b10a0a604305.setIcon(icon_050079312e3446988ed372530d6d4506);
-        
-    
-        var popup_9f66d2ff44184dc0af1cc09a2dab241f = L.popup({"maxWidth": "100%"});
+Balag[16] = L.marker(
+[28.309971, 45.432641],
+{});
 
-        
-            var i_frame_99ba79375fd24d908e2e10361e85900d = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOuS4reayueawtOW6leWvruermTxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQzN0srNzAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_9f66d2ff44184dc0af1cc09a2dab241f.setContent(i_frame_99ba79375fd24d908e2e10361e85900d);
-        
 
-        marker_aeef4811dc314820a058b10a0a604305.bindPopup(popup_9f66d2ff44184dc0af1cc09a2dab241f)
-        ;
+Balag[16].setIcon(iconBalag);
 
-        
-    
-    
-            var marker_9622a821ca074eee91126626141ab9b7 = L.marker(
-                [22.36416749, 120.607852],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_2ac78de340844cd7b16b7abbe1d35aef = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_9622a821ca074eee91126626141ab9b7.setIcon(icon_2ac78de340844cd7b16b7abbe1d35aef);
-        
-    
-        var popup_213fca4971c14fc682032711c7ea5f51 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_f37c3abd5ab34bb19029c3822e8175e7 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuiTrumcp+eOizxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQzOUsrMDAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_213fca4971c14fc682032711c7ea5f51.setContent(i_frame_f37c3abd5ab34bb19029c3822e8175e7);
-        
+var popB16 = L.popup({"maxWidth": "100%"});
 
-        marker_9622a821ca074eee91126626141ab9b7.bindPopup(popup_213fca4971c14fc682032711c7ea5f51)
-        ;
 
-        
-    
-    
-            var marker_e4e55e57841c44a59211c638b1807737 = L.marker(
-                [22.34554373, 120.6100157],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_d1ef91a08e9e4680a377a23a08281447 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_e4e55e57841c44a59211c638b1807737.setIcon(icon_d1ef91a08e9e4680a377a23a08281447);
-        
-    
-        var popup_56bbcd9de9cb4f64a75d324c1e50f4e9 = L.popup({"maxWidth": "100%"});
+var infoWindowB16 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :3:29 مساءً 
+`+'<br>'+
 
-        
-            var i_frame_7c789d0f31984f9bbe38a0df516700cc = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuS4reayueahguagvOermTxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMy50aGIuZ292LnR3L1QxLTQ0MUsrNzAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_56bbcd9de9cb4f64a75d324c1e50f4e9.setContent(i_frame_7c789d0f31984f9bbe38a0df516700cc);
-        
+`<a href="https://goo.gl/maps/qMwrMVVZYTApJAaX9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        marker_e4e55e57841c44a59211c638b1807737.bindPopup(popup_56bbcd9de9cb4f64a75d324c1e50f4e9)
-        ;
 
-        
-    
-    
-            var marker_1118978803d34325a5257b42a8e666a1 = L.marker(
-                [22.33000604, 120.6204671],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_e58a4befe240439d82cb5feb184912ef = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_1118978803d34325a5257b42a8e666a1.setIcon(icon_e58a4befe240439d82cb5feb184912ef);
-        
-    
-        var popup_b865b99b0fe943f4ad51a5a1dfa17e95 = L.popup({"maxWidth": "100%"});
+);
+popB16.setContent(infoWindowB16);
 
-        
-            var i_frame_9fcfa70d26284dcf86894c744fe38b0b = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuWKoOelv+Wci+Wwjzxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQ0NEsrNDAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_b865b99b0fe943f4ad51a5a1dfa17e95.setContent(i_frame_9fcfa70d26284dcf86894c744fe38b0b);
-        
 
-        marker_1118978803d34325a5257b42a8e666a1.bindPopup(popup_b865b99b0fe943f4ad51a5a1dfa17e95)
-        ;
+Balag[16].bindPopup(popB16)
+;
 
-        
-    
-    
-            var marker_4585a66c9562497f9a93e4787be31b66 = L.marker(
-                [22.31396452, 120.6367817],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_32df9a9ea91344118c9b45e82c64e6d5 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_4585a66c9562497f9a93e4787be31b66.setIcon(icon_32df9a9ea91344118c9b45e82c64e6d5);
-        
-    
-        var popup_4ccf09557df6463391fd847a30fd7608 = L.popup({"maxWidth": "100%"});
+Balag[17] = L.marker(
+[26.502923, 46.044094],
+{});
 
-        
-            var i_frame_ee9052eca851474eaee4ad274892f901 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuS4ieWAi+WCu+eTnOWSluWVoeW7szxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYyNS50aGIuZ292LnR3L1QxLTQ0NksrMDEwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_4ccf09557df6463391fd847a30fd7608.setContent(i_frame_ee9052eca851474eaee4ad274892f901);
-        
 
-        marker_4585a66c9562497f9a93e4787be31b66.bindPopup(popup_4ccf09557df6463391fd847a30fd7608)
-        ;
+Balag[17].setIcon(iconBalag);
 
-        
-    
-    
-            var marker_782331b3d8e34dbd988481dc5e1f9b67 = L.marker(
-                [22.30009606, 120.6438459],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_cef156a0337a4d54bd7e0b72392efcfe = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_782331b3d8e34dbd988481dc5e1f9b67.setIcon(icon_cef156a0337a4d54bd7e0b72392efcfe);
-        
-    
-        var popup_142a9a88068441ffa6b9327a4b1dfa1b = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_474a6cab743847e786d8afbd4f4dc901 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOuaei+Wxseemj+iyoeWurjxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQ0N0srODAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_142a9a88068441ffa6b9327a4b1dfa1b.setContent(i_frame_474a6cab743847e786d8afbd4f4dc901);
-        
+var popB17 = L.popup({"maxWidth": "100%"});
 
-        marker_782331b3d8e34dbd988481dc5e1f9b67.bindPopup(popup_142a9a88068441ffa6b9327a4b1dfa1b)
-        ;
 
-        
-    
-    
-            var marker_3c36db77ee6549338a1e3fbb622c68ae = L.marker(
-                [22.25685751, 120.6537706],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_802e92d23eeb4d989b266dfc42c03209 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_3c36db77ee6549338a1e3fbb622c68ae.setIcon(icon_802e92d23eeb4d989b266dfc42c03209);
-        
-    
-        var popup_fa2b8e6ad98e4ed4a6db10a2e6a6af14 = L.popup({"maxWidth": "100%"});
+var infoWindowB17 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :8:29 مساءً 
+`+'<br>'+
 
-        
-            var i_frame_8d7eda3727a64d3cbe3c720b3f42949d = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuaei+WxseWkp+apizxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQ1M0srMzAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_fa2b8e6ad98e4ed4a6db10a2e6a6af14.setContent(i_frame_8d7eda3727a64d3cbe3c720b3f42949d);
-        
+`<a href="https://goo.gl/maps/mauRP7ifD16BRofs9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        marker_3c36db77ee6549338a1e3fbb622c68ae.bindPopup(popup_fa2b8e6ad98e4ed4a6db10a2e6a6af14)
-        ;
 
-        
-    
-    
-            var marker_73d9d914a5784631ae266bfb4a9e86c9 = L.marker(
-                [22.23067113, 120.6741555],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_2a890ef959b9472da25af944ad36529c = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_73d9d914a5784631ae266bfb4a9e86c9.setIcon(icon_2a890ef959b9472da25af944ad36529c);
-        
-    
-        var popup_944c8ae76ca14062a0a45b83a35e4c90 = L.popup({"maxWidth": "100%"});
+);
+popB17.setContent(infoWindowB17);
 
-        
-            var i_frame_5eafee8ea93747e9990ba2bcc93a189d = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOualk+WSluWVoTxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQ1NksrMTAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_944c8ae76ca14062a0a45b83a35e4c90.setContent(i_frame_5eafee8ea93747e9990ba2bcc93a189d);
-        
 
-        marker_73d9d914a5784631ae266bfb4a9e86c9.bindPopup(popup_944c8ae76ca14062a0a45b83a35e4c90)
-        ;
+Balag[17].bindPopup(popB17)
+;
 
-        
-    
-    
-            var marker_0e13944743d24705816414db41a7521d = L.marker(
-                [22.21758058, 120.6803247],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_093719c21ba54883ae3e42299d9d18a8 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_0e13944743d24705816414db41a7521d.setIcon(icon_093719c21ba54883ae3e42299d9d18a8);
-        
-    
-        var popup_f83cea4968e74996a9ff46258fb4a356 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_7f8855d323ef4e1fa78ef40b31c80ae5 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOjQ1OUsrMDgwPGJyPjxpbWcgc3JjPWh0dHBzOi8vdGhiY2N0djExLnRoYi5nb3YudHcvVDEtNDU5SyswODA/cmVzb2x1dGlvbj1DSUZfMzUyWDI4OCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_f83cea4968e74996a9ff46258fb4a356.setContent(i_frame_7f8855d323ef4e1fa78ef40b31c80ae5);
-        
+Balag[18] = L.marker(
+[20.607141, 46.991955],
+{});
 
-        marker_0e13944743d24705816414db41a7521d.bindPopup(popup_f83cea4968e74996a9ff46258fb4a356)
-        ;
 
-        
-    
-    
-            var marker_992f08f13c8d448c863d38a0febdb5a8 = L.marker(
-                [22.19620662, 120.6904919],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_8c63244e2f0947e4b5d64a325058850e = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_992f08f13c8d448c863d38a0febdb5a8.setIcon(icon_8c63244e2f0947e4b5d64a325058850e);
-        
-    
-        var popup_f77093b58ab64815ae118ad4c72df7cd = L.popup({"maxWidth": "100%"});
+Balag[18].setIcon(iconBalag);
 
-        
-            var i_frame_9cc32745b3654891b74372aa390311c5 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljJc8YnI+6ZmE6L+R5Zyw5qiZOualk+a4r+apizxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QxLTQ2MEsrMzAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_f77093b58ab64815ae118ad4c72df7cd.setContent(i_frame_9cc32745b3654891b74372aa390311c5);
-        
 
-        marker_992f08f13c8d448c863d38a0febdb5a8.bindPopup(popup_f77093b58ab64815ae118ad4c72df7cd)
-        ;
+var popB18 = L.popup({"maxWidth": "100%"});
 
-        
-    
-    
-            var marker_7d76c09c72d246bfabb43dc37ab490b2 = L.marker(
-                [22.18324568, 120.6920697],
-                {}
-            ).addTo(map);
-        
-    
-            var icon_6fd59dd2142441a588141c1535c9e62d = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_7d76c09c72d246bfabb43dc37ab490b2.setIcon(icon_6fd59dd2142441a588141c1535c9e62d);
-        
-    
-        var popup_23a7c2e648bb4145818e21bd79b14815 = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_7059cb220b274b77aa5d0ef3f68da8f5 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOjI2LTNLKzUwMDxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QyNi0zSys1MDA/cmVzb2x1dGlvbj1DSUZfMzUyWDI4OCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCI+" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_23a7c2e648bb4145818e21bd79b14815.setContent(i_frame_7059cb220b274b77aa5d0ef3f68da8f5);
-        
+var infoWindowB18 = 
+(`
+<div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+وقت البلاغ :3:49 مساءً 
+`+'<br>'+
 
-        marker_7d76c09c72d246bfabb43dc37ab490b2.bindPopup(popup_23a7c2e648bb4145818e21bd79b14815)
-        ;
+`<a href="https://goo.gl/maps/FqhcjLAitqHkqMKh6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
++ `</div>`
 
-        
+
+);
+popB18.setContent(infoWindowB18);
+
+
+Balag[18].bindPopup(popB18)
+;
+
+
+Balag[19] = L.marker(
+    [18.417148, 44.459601],
+    {});
     
     
-            var marker_c4d1aff010fa41ff9b64166e48e7cdd3 = L.marker(
-                [22.05882815, 120.7175808],
-                {}
-            ).addTo(map);
-        
+    Balag[19].setIcon(iconBalag);
     
-            var icon_f7935b4f476c4391b9625fe7691456c4 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_c4d1aff010fa41ff9b64166e48e7cdd3.setIcon(icon_f7935b4f476c4391b9625fe7691456c4);
-        
     
-        var popup_3d691ff466814dc2b776929c85ca65dd = L.popup({"maxWidth": "100%"});
-
-        
-            var i_frame_4b7bb87c50564741bb8d7f7f72a088b4 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuacneWFg+Wurjxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYyNS50aGIuZ292LnR3L1QyNi0xOEsrMDIwUz9yZXNvbHV0aW9uPUNJRl8zNTJYMjg4IHdpZHRoPSIzNTAiIGhlaWdodD0iMzUwIj4=" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_3d691ff466814dc2b776929c85ca65dd.setContent(i_frame_4b7bb87c50564741bb8d7f7f72a088b4);
-        
-
-        marker_c4d1aff010fa41ff9b64166e48e7cdd3.bindPopup(popup_3d691ff466814dc2b776929c85ca65dd)
-        ;
-
-        
+    var popB19 = L.popup({"maxWidth": "100%"});
     
     
-            var marker_8c9176e8cb3342fab4ed3641348a17e7 = L.marker(
-                [22.03655822, 120.73801],
-                {}
-            ).addTo(map);
-        
+    var infoWindowB19 = 
+    (`
+    <div style="width: 120px; height: 39px; font-size:13px; font-weight: bold;">
+    وقت االبلاغ :5:29 مساءً 
+    `+'<br>'+
     
-            var icon_21a914a4da8845b4971b0b8b9d05a3eb = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_8c9176e8cb3342fab4ed3641348a17e7.setIcon(icon_21a914a4da8845b4971b0b8b9d05a3eb);
-        
+    `<a href="https://goo.gl/maps/Wtgys12qNQ4E3jLa6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;انتقل للمكان</a>` 
+    + `</div>`
     
-        var popup_9e8ae8e357d04106b4a6659da94c1bb2 = L.popup({"maxWidth": "100%"});
-
-        
-            var i_frame_f48bd3cd6926432597aa1c6db4cd2037 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOumAsueZvOaxvei7iuS/nemkiuW7oDxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QyNi0yMUsrMzIzP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_9e8ae8e357d04106b4a6659da94c1bb2.setContent(i_frame_f48bd3cd6926432597aa1c6db4cd2037);
-        
-
-        marker_8c9176e8cb3342fab4ed3641348a17e7.bindPopup(popup_9e8ae8e357d04106b4a6659da94c1bb2)
-        ;
-
-        
     
+    );
+    popB19.setContent(infoWindowB19);
     
-            var marker_3136e31c8741424c8e3f2a78bd052d01 = L.marker(
-                [22.01593255, 120.7441801],
-                {}
-            ).addTo(map);
-        
     
-            var icon_919ea30b3c844a1ab1e0af61d9612e45 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "asterisk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
-            );
-            marker_3136e31c8741424c8e3f2a78bd052d01.setIcon(icon_919ea30b3c844a1ab1e0af61d9612e45);
-        
+    Balag[19].bindPopup(popB19)
+    ;
+
+
     
-        var popup_3ab9cc8d79524d36a5a6e8450728260e = L.popup({"maxWidth": "100%"});
 
-        
-            var i_frame_eeb65e082dff46d9967e321e1fc2c824 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICDmlJ3lvbHmqZ/miYDlsaw65YWs6Lev57i95bGAIOmdouWQkTrljZc8YnI+6ZmE6L+R5Zyw5qiZOuaBhuaYpeeVtumLqjxicj48aW1nIHNyYz1odHRwczovL3RoYmNjdHYxMS50aGIuZ292LnR3L1QyNi0yMUsrNTAwP3Jlc29sdXRpb249Q0lGXzM1MlgyODggd2lkdGg9IjM1MCIgaGVpZ2h0PSIzNTAiPg==" width="400" style="border:none !important;" height="400"></iframe>`)[0];
-            popup_3ab9cc8d79524d36a5a6e8450728260e.setContent(i_frame_eeb65e082dff46d9967e321e1fc2c824);
-        
+            // ********* end Balag *********** 
 
-        marker_3136e31c8741424c8e3f2a78bd052d01.bindPopup(popup_3ab9cc8d79524d36a5a6e8450728260e)
-        ;
+    
+    
+          
 
         
     
